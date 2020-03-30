@@ -3,7 +3,7 @@ import React from 'react'
 export function Home() {
   return (
     <div>
-      <h1>Hello Student!</h1>
+      <h1>Hello Team! This is a test!</h1>
       <p>Welcome to your new SDG SPA, built with:</p>
       <ul>
         <li>
@@ -39,7 +39,7 @@ export function Home() {
           the development server from <code>create-react-app</code> runs in the
           background automatically, so your client-side resources are
           dynamically built on demand and the page refreshes when you modify any
-          file.
+          file. This is a change that I made to try to commit.
         </li>
         <li>
           <strong>Efficient production builds</strong>. In production mode,
