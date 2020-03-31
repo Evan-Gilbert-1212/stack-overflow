@@ -7,15 +7,13 @@ export function Layout(props) {
     <div>
       <NavMenu />
       <div className="main-page">
-        <div className="leftBar">wefwedf</div>
+        <div className="leftBar">Left Side</div>
         <div className="rightbar">
-          {/* map look the questions to a jsx */}
           <Container>{props.children}</Container>
-          <Container>{props.children}</Container>
-          <Container>{props.children}</Container>
-          {/* end of the loop section */}
         </div>
-        <div className="far-right">fsdaasdfasdfasdfsdf</div>
+        <div className="far-right" style={{}}>
+          fsdaasdfasdfasdfsdf
+        </div>
       </div>
     </div>
   )
