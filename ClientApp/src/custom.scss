@@ -12,3 +12,37 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+.main-page {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+}
+
+.leftBar {
+  width: 20%;
+  margin-top: 3.5rem;
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  // width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  // background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+  background-color: blue;
+}
+
+.rightbar {
+  scroll-padding-top: -9rem;
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 5rem;
+}
+
+.far-right {
+  background-color: red;
+  width: 20%;
+}
