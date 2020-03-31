@@ -1,16 +1,16 @@
-Users
+-----------Users-----------
 ID - PK
 UserName - TEXT
 Password - TEXT
 PicturePath - TEXT
-Questions
+---------Questions---------
 ID - PK
 QuestionTitle - TEXT
 Question - TEXT
 Score - INT
 QuestionPostedOn - DateTime
 Tags - TEXT
-Answers
+----------Answers----------
 ID - PK
 QuestionID - FK
 Answer - TEXT
