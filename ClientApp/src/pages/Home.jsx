@@ -3,7 +3,7 @@ import React from 'react'
 export function Home() {
   return (
     <div>
-      <h1>Hello Student!</h1>
+      {/* <h1>Hello Student!</h1>
       <p>Welcome to your new SDG SPA, built with:</p>
       <ul>
         <li>
@@ -56,7 +56,7 @@ export function Home() {
         based on the <code>create-react-app</code> template. If you open a
         command prompt in that directory, you can run <code>npm</code> commands
         such as <code>npm test</code> or <code>npm install</code>.
-      </p>
+      </p> */}
     </div>
   )
 }
