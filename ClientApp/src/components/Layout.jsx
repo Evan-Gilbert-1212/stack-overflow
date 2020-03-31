@@ -11,8 +11,6 @@ export function Layout(props) {
         <div className="rightbar">
           {/* map look the questions to a jsx */}
           <Container>{props.children}</Container>
-          <Container>{props.children}</Container>
-          <Container>{props.children}</Container>
           {/* end of the loop section */}
         </div>
         <div className="far-right">fsdaasdfasdfasdfsdf</div>

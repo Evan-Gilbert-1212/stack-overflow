@@ -26,7 +26,7 @@ namespace stack_overflow.Models
       if (!optionsBuilder.IsConfigured)
       {
         var envConn = Environment.GetEnvironmentVariable("DATABASE_URL");
-        var conn = "server=localhost;database=stack_overflowDatabase";
+        var conn = "server=localhost;database=stack_overflowDatabase;User Id=postgres;Password=dev";
         if (envConn != null)
         {
           conn = ConvertPostConnectionToConnectionString(envConn);
