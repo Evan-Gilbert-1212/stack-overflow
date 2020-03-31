@@ -15,7 +15,7 @@ export function Layout(props) {
           <Container>{props.children}</Container>
           {/* end of the loop section */}
         </div>
-        <div className="far-right">fsdasdf</div>
+        <div className="far-right">fsdaasdfasdfasdfsdf</div>
       </div>
     </div>
   )
