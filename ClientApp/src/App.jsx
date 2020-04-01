@@ -6,6 +6,7 @@ import HelloWorld from './pages/_template/HelloWorld'
 import HeyWorld from './pages/_template/HeyWorld'
 import NotFound from './pages/NotFound'
 import SearchPage from './pages/SearchPage'
+import SearchResults from './pages/SearchResults'
 import './custom.scss'
 export default class App extends Component {
   static displayName = App.name
@@ -18,6 +19,7 @@ export default class App extends Component {
           <Route exact path="/counter" component={HelloWorld} />
           <Route exact path="/typescript" component={HeyWorld} />
           <Route exact path="/search" component={SearchPage} />
+          <Route exact path="/search/:searchTerm" component={SearchResults} />
           <Route exact path="*" component={NotFound} />
         </Switch>
       </Layout>
