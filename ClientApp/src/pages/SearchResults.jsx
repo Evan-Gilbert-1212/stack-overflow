@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import './search.scss'
+import '../search.scss'
 
 const SearchResultsPage = () => {
   //set vars for use of state

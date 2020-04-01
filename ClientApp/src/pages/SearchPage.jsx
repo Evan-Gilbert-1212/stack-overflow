@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './search.scss'
+import '../search.scss'
 
 const SearchPage = () => {
   //set vars for use of state

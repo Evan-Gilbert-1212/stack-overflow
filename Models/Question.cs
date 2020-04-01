@@ -12,8 +12,8 @@ namespace stack_overflow
     public string Tags { get; set; }
     public DateTime QuestionPostedOn { get; set; } = DateTime.Now;
     //navigation
-    public int UserId { get; set; }
-    public User User { get; set; }
+    // public int UserId { get; set; }
+    // public User User { get; set; }
     public List<Answer> Answers { get; set; }
   }
 }
