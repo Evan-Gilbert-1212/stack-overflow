@@ -6,35 +6,37 @@ const Summary = props => {
 
   return (
     <>
-      <div className="home-question-wrapper"></div>
-      <div className="vote-box">
-        <p>{question.questionScore}</p>
-        <p>votes</p>
-      </div>
-      <div className="vote-answer">
-        <p>{question.answers.length}</p>
-        <p>answer</p>
-      </div>
-      <div className="vote-views">
-        <p>0</p>
-        <p>views</p>
-      </div>
-      <div className="question-area">
-        <div className="question-area-top">
-          <div className="bounty">+50</div>
-          <p className="question-summary">{question.questionText}</p>
+      <div className="home-question-wrapper">
+        <div className="vote-box">
+          <p>{question.questionScore}</p>
+          <p>votes</p>
         </div>
-        <div className="question-area-bottom">
-          <div className="tags">
-            <div>openmp</div>
-            <div>llvm</div>
-            <div>llvm-clang</div>
+        <div className="vote-answer">
+          <p>{question.answers.length}</p>
+          <p>answer</p>
+        </div>
+        <div className="vote-views">
+          <p>0</p>
+          <p>views</p>
+        </div>
+        <div className="question-area">
+          <div className="question-area-top">
+            <div className="bounty">+50</div>
+            <p className="question-summary">{question.questionText}</p>
           </div>
-          <div className="contributor">
-            <p>This needs to be fixed</p>
+          <div className="question-area-bottom">
+            <div className="tags">
+              <div>openmp</div>
+              <div>llvm</div>
+              <div>llvm-clang</div>
+            </div>
+            <div className="contributor">
+              <p>This needs to be fixed</p>
+            </div>
           </div>
         </div>
       </div>
+      <hr />
     </>
   )
 }
