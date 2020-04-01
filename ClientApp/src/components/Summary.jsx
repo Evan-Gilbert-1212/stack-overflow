@@ -8,7 +8,7 @@ const Summary = props => {
     <>
       <div className="home-question-wrapper"></div>
       <div className="vote-box">
-        <p>1</p>
+        <p>{question.questionScore}</p>
         <p>votes</p>
       </div>
       <div className="vote-answer">
@@ -31,7 +31,7 @@ const Summary = props => {
             <div>llvm-clang</div>
           </div>
           <div className="contributor">
-            <p>answered 10 hours ago Karthik Sriram 1</p>
+            <p>This needs to be fixed</p>
           </div>
         </div>
       </div>
