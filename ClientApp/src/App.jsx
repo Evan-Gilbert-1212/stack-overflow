@@ -6,6 +6,7 @@ import HelloWorld from './pages/_template/HelloWorld'
 import HeyWorld from './pages/_template/HeyWorld'
 import NotFound from './pages/NotFound'
 import SearchPage from './pages/SearchPage'
+import SearchResults from './pages/SearchResults'
 import './custom.scss'
 import AddQuestion from './pages/AddQuestion'
 export default class App extends Component {
@@ -20,6 +21,7 @@ export default class App extends Component {
           <Route exact path="/typescript" component={HeyWorld} />
           <Route exact path="/search" component={SearchPage} />
           <Route exact path="/ask" component={AddQuestion} />
+          <Route exact path="/search/:searchTerm" component={SearchResults} />
           <Route exact path="*" component={NotFound} />
         </Switch>
       </Layout>
