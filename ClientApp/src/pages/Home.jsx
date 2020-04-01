@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './home.scss'
+import axios from 'axios'
 
 export function Home() {
   return (
     <>
-      {/* <div className="home-page">
+      <div className="home-page">
         <div className="home-top-left">
           <h2 className="home-top-h1">Top Questions</h2>
         </div>
@@ -57,9 +58,9 @@ export function Home() {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
 
-      <div class="question-summary narrow" id="question-summary-60693395">
+      {/* <div class="question-summary narrow" id="question-summary-60693395">
         <div
           onclick="window.location.href='/questions/60693395/django-settings-for-tests-of-a-reusable-app'"
           class="cp"
@@ -150,7 +151,7 @@ export function Home() {
             </span>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }
