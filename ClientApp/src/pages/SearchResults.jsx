@@ -10,10 +10,7 @@ const SearchResultsPage = props => {
 
   //poll api for results based on user input
   const getQuestions = async () => {
-    const resp = await axios.get(
-      `/api/search/questions?searchTerm=${searchTerm}`
-    )
-    console.log(searchTerm)
+    const resp = await axios.get(`/api/questions/search/${searchTerm}`)
     console.log(resp)
     setSearchResults(resp.data)
   }
@@ -21,7 +18,9 @@ const SearchResultsPage = props => {
   //poll api on page load
   useEffect(() => {
     getQuestions()
-  })
+    console.log(props)
+    console.log(searchTerm)
+  }, [])
 
   //render if searchResults exist
   if (!searchResults) {
@@ -37,7 +36,7 @@ const SearchResultsPage = props => {
         </div>
         <div className="results">Result</div>
         {searchResults.map(result => {
-          return <SearchResult key={result} />
+          return <SearchResult key={result.id} />
         })}
       </div>
     )

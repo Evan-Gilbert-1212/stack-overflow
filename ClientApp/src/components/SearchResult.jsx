@@ -8,12 +8,12 @@ const SearchResult = props => {
     questionText,
     questionTags,
     questionDate,
-  ] = props
+  ] = props.match.params.id
   return (
     <div className="result-question-summary">
-      <div classname="result-stats-container">
-        <div classname="result-stats">
-          <div classname="result-votes">
+      <div className="result-stats-container">
+        <div className="result-stats">
+          <div className="result-votes">
             <div className="result-vote-box">
               <strong>{questionScore}</strong>votes
             </div>
