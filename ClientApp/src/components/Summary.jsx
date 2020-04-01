@@ -31,7 +31,7 @@ const Summary = props => {
               <div>llvm-clang</div>
             </div>
             <div className="contributor">
-              <p>This needs to be fixed</p>
+              <p>asked/modified/answered 34 secs ago D. Tulloch</p>
             </div>
           </div>
         </div>
