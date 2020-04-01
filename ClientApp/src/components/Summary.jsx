@@ -12,7 +12,7 @@ const Summary = props => {
         <p>votes</p>
       </div>
       <div className="vote-answer">
-        <p>46</p>
+        <p>{question.answers.length}</p>
         <p>answer</p>
       </div>
       <div className="vote-views">
