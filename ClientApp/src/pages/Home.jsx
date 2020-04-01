@@ -3,64 +3,77 @@ import './home.scss'
 import axios from 'axios'
 
 export function Home() {
-  return (
-    <>
-      <div className="home-page">
-        <div className="home-top-left">
-          <h2 className="home-top-h1">Top Questions</h2>
-        </div>
-        <div className="home-top-right">
-          <button className="home-ask-questions">Ask Questions</button>
-        </div>
-      </div>
-      <div className="home-sort-buttons">
-        <button>Interesting</button>
-        <button>Bountied</button>
-        <button>Hot</button>
-        <button>Week</button>
-        <button>Month</button>
-      </div>
-      <hr />
-      <div className="home-question-wrapper">
-        <div className="vote-box">
-          <p>1</p>
-          <p>votes</p>
-        </div>
-        <div className="vote-answer">
-          <p>46</p>
-          <p>answer</p>
-        </div>
-        <div className="vote-views">
-          <p>0</p>
-          <p>views</p>
-        </div>
-        <div className="question-area">
-          <div className="question-area-top">
-            <div className="bounty">+50</div>
-            <p className="question-summary">
-              is simply dummy text of the printing and typesetting industry.
-              Lorem Ipsum has been the industry's standard dummy text ever since
-              the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book. It has survived not
-              only five centuries, but also the leap into electronic
-              typesetting, remaining essentially unchanged. It was popularised
-              in the 1960s with the release of Letra
-            </p>
-          </div>
-          <div className="question-area-bottom">
-            <div className="tags">
-              <div>openmp</div>
-              <div>llvm</div>
-              <div>llvm-clang</div>
-            </div>
-            <div className="contributor">
-              <p>answered 10 hours ago Karthik Sriram 1</p>
-            </div>
-          </div>
-        </div>
-      </div>
+  const [question, setQuestion] = useState()
 
-      {/* <div class="question-summary narrow" id="question-summary-60693395">
+  const getAllQuestions = async () => {
+    const resp = await axios.get('/api/Questions')
+    // setQuestion(resp.data, () => {
+    //   console.log(question)
+    // })
+    setQuestion(resp.data)
+    console.log(resp.data)
+  }
+
+  useEffect(() => {
+    console.log('inside')
+    getAllQuestions()
+  }, [])
+
+  if (!question) {
+    return <div>Loading...</div>
+  } else {
+    return (
+      <>
+        <div className="home-page">
+          <div className="home-top-left">
+            <h2 className="home-top-h1">Top Questions</h2>
+          </div>
+          <div className="home-top-right">
+            <button className="home-ask-questions">Ask Questions</button>
+          </div>
+        </div>
+        <div className="home-sort-buttons">
+          <button>Interesting</button>
+          <button>Bountied</button>
+          <button>Hot</button>
+          <button>Week</button>
+          <button>Month</button>
+        </div>
+        <hr />
+        {/* top of the map */}
+        <div className="home-question-wrapper">
+          <div className="vote-box">
+            <p>1</p>
+            <p>votes</p>
+          </div>
+          <div className="vote-answer">
+            <p>46</p>
+            <p>answer</p>
+          </div>
+          <div className="vote-views">
+            <p>0</p>
+            <p>views</p>
+          </div>
+          <div className="question-area">
+            <div className="question-area-top">
+              <div className="bounty">+50</div>
+              <p className="question-summary">{question[0].questionText}</p>
+            </div>
+            <div className="question-area-bottom">
+              <div className="tags">
+                <div>openmp</div>
+                <div>llvm</div>
+                <div>llvm-clang</div>
+              </div>
+              <div className="contributor">
+                <p>answered 10 hours ago Karthik Sriram 1</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* bottom of the map */}
+
+        {/* <div class="question-summary narrow" id="question-summary-60693395">
         <div
           onclick="window.location.href='/questions/60693395/django-settings-for-tests-of-a-reusable-app'"
           class="cp"
@@ -152,6 +165,7 @@ export function Home() {
           </div>
         </div>
       </div> */}
-    </>
-  )
+      </>
+    )
+  }
 }
