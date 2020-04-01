@@ -58,20 +58,6 @@ const AddQuestion = () => {
         <div>
           <button onClick={addQuestion}>Post Your Question</button>
         </div>
-        <h2>User ID (TEMPORARY)</h2>
-        <input
-          className="UserId"
-          name="UserId"
-          type="text"
-          onChange={updateQuestionData}
-        ></input>
-        <h2>Score (TEMPORARY)</h2>
-        <input
-          className="Score"
-          name="Score"
-          type="text"
-          onChange={updateQuestionData}
-        ></input>
       </section>
     </>
   )

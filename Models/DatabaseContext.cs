@@ -8,11 +8,8 @@ namespace stack_overflow.Models
   public partial class DatabaseContext : DbContext
   {
     //database tables
-    public DbSet<User> Users { get; set; }
     public DbSet<Question> Questions { get; set; }
     public DbSet<Answer> Answers { get; set; }
-
-
 
     private string ConvertPostConnectionToConnectionString(string connection)
     {

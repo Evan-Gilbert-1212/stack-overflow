@@ -6,13 +6,11 @@ namespace stack_overflow
   {
     public int Id { get; set; }
     public string AnswerText { get; set; }
-    public int AnswerScore { get; set; }
+    public int AnswerScore { get; set; } = 0;
     public DateTime AnswerPostedOn { get; set; } = DateTime.Now;
 
     //navigation
     public int QuestionId { get; set; }
     public Question Question { get; set; }
-    // public int UserId { get; set; }
-    // public User User { get; set; }
   }
 }
