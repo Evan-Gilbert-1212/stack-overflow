@@ -1,13 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './search.scss'
 
 const SearchPage = () => {
   //set vars for use of state
   const [searchTerm, setSearchTerm] = useState('')
+  const [redirect, setRedirect] = useState()
 
   const getSearchTerm = e => {
     console.log(e.target.value)
     setSearchTerm(e.target.value)
+  }
+
+  const getRedirect = e => {
+    e.preventDefault()
+    setRedirect(true)
   }
 
   return (
@@ -22,8 +28,14 @@ const SearchPage = () => {
         </div>
       </div>
       <div className="search-input">
-        <input name="search" onChange={setSearchTerm} />
-        <button className="search-search-button" value={searchTerm}>
+        <form onSubmit={getRedirect}>
+          <input name="search" onChange={setSearchTerm} />
+        </form>
+        <button
+          className="search-search-button"
+          value={searchTerm}
+          onClick={getSearchTerm}
+        >
           <a href={`/search/${searchTerm}`}>Search</a>
         </button>
       </div>
