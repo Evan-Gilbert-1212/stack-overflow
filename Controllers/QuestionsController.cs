@@ -25,7 +25,10 @@ namespace stack_overflow.Controllers
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Question>>> GetQuestions()
     {
-      return await _context.Questions.ToListAsync();
+      // return await _context.Questions.ToListAsync();
+
+      //Select * from Questions Join Answers on Question.Id = Answer.ID
+      return await _context.Questions.Include(ques => ques.Answers).ToListAsync();
     }
 
     // GET: api/Questions/5
