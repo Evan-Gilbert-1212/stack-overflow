@@ -45,7 +45,7 @@ const AddQuestion = () => {
     return (
       <>
         <h1 className="add-question-header">Ask a public question</h1>
-        <section>
+        <section className="add-question-section">
           <h2 className="add-question-subheader">Title</h2>
           <p className="add-question-p">
             Be specific and imagine you're asking a question to another person
