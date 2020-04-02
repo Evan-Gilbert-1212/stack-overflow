@@ -18,7 +18,9 @@ const QuestionDetails = props => {
 
   return (
     <div>
-      <h1>This is the Question Details Page</h1>
+      <h1 className="question-detail-header">
+        This is the Question Details Page
+      </h1>
       <h2>{question.questionTitle}</h2>
       <h2>{question.questionText}</h2>
       <h2>{question.tags}</h2>

@@ -44,38 +44,40 @@ const AddQuestion = () => {
   } else {
     return (
       <>
-        <h1>Ask a public question</h1>
+        <h1 className="add-question-header">Ask a public question</h1>
         <section>
-          <h2>Title</h2>
-          <p>
+          <h2 className="add-question-subheader">Title</h2>
+          <p className="add-question-p">
             Be specific and imagine you're asking a question to another person
           </p>
           <input
-            className="QuestionTitle"
+            className="add-question-title"
             name="QuestionTitle"
             type="text"
             placeholder="e.g. How to implement React Hooks in JavaScript"
             onChange={updateQuestionData}
           ></input>
-          <h2>Body</h2>
-          <p>
+          <h2 className="add-question-subheader">Body</h2>
+          <p className="add-question-p">
             Include all the information someone would need to answer your
             question
           </p>
           <textarea
-            className="QuestionText"
+            className="add-question-body"
             name="QuestionText"
             onChange={updateQuestionData}
           ></textarea>
-          <h2>Tags</h2>
+          <h2 className="add-question-subheader">Tags</h2>
           <input
             type="text"
-            className="Tags"
+            className="add-question-tags"
             name="Tags"
             onChange={updateQuestionData}
           ></input>
           <div>
-            <button onClick={addQuestion}>Post Your Question</button>
+            <button className="add-question" onClick={addQuestion}>
+              Post Your Question
+            </button>
           </div>
         </section>
       </>
