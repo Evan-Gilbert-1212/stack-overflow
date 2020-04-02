@@ -5,11 +5,12 @@ import axios from 'axios'
 const QuestionDetails = props => {
   const questionId = props.match.params.questionId
   const [question, setQuestion] = useState({})
+  const [questionTags, setQuestionTags] = useState([])
 
   const getQuestion = async () => {
     const response = await axios.get(`/api/questions/${questionId}`)
-    console.log(response.data)
     setQuestion(response.data)
+    setQuestionTags(response.data.tags.replace(' ', '').split(','))
   }
 
   useEffect(() => {
@@ -18,14 +19,21 @@ const QuestionDetails = props => {
 
   return (
     <div>
-      <h1 className="question-detail-header">
-        This is the Question Details Page
-      </h1>
-      <h2>{question.questionTitle}</h2>
-      <h2>{question.questionText}</h2>
-      <h2>{question.tags}</h2>
-      <h2>{question.questionScore}</h2>
-      <h2>{question.questionPostedOn}</h2>
+      <h1 className="question-detail-header">{question.questionTitle}</h1>
+      <div className="question-detail-seperator"></div>
+      <p className="question-detail-body">{question.questionText}</p>
+      <div className="question-detail-tags">
+        {questionTags.map(tag => {
+          return <div>{tag}</div>
+        })}
+      </div>
+      {/* <p>{question.questionScore}</p>
+      <p>{question.questionPostedOn}</p> */}
+      <h3 className="answer-heading">Your Answer</h3>
+      <textarea className="question-answer-entry"></textarea>
+      <div>
+        <button className="add-answer">Post Your Answer</button>
+      </div>
     </div>
   )
 }

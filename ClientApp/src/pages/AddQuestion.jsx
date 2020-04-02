@@ -66,10 +66,12 @@ const AddQuestion = () => {
             onChange={updateQuestionData}
           ></textarea>
           <h2 className="add-question-subheader">Tags</h2>
+          <p className="add-question-p">Enter keywords separated by commas</p>
           <input
             type="text"
             className="add-question-tags"
             name="Tags"
+            placeholder="e.g JavaScript, React, Hooks"
             onChange={updateQuestionData}
           ></input>
           <div>
