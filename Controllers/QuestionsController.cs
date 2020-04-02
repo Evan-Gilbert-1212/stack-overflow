@@ -41,11 +41,15 @@ namespace stack_overflow.Controllers
 
       return question;
     }
-    [HttpGet("/search/{searchTerm}")]
 
-    public List<Question> GetResult(string searchTerm)
+    //get api/questions/search
+    [HttpGet("/search")]
+
+    public async Task<ActionResult> GetResult(string searchTerm)
     {
-      return _context.Questions.Where(question => question.QuestionText.Contains(searchTerm)).ToList();
+      var results = _context.Questions.Where(question => question.QuestionText.Contains(searchTerm));
+
+      return Ok(await results.ToListAsync());
     }
 
     // PUT: api/Questions/5
