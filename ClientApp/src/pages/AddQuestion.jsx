@@ -27,6 +27,7 @@ const AddQuestion = () => {
         shouldRedirect: true,
         savedQuestionData: response.data,
       })
+      console.log(response.data)
     } else {
       //failure to add
     }
@@ -36,7 +37,7 @@ const AddQuestion = () => {
     return (
       <Redirect
         to={{
-          pathname: `/questions/${saveResults.savedQuestionData.Id}`,
+          pathname: `/questions/${saveResults.savedQuestionData.id}`,
         }}
       />
     )
