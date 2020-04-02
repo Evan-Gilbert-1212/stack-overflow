@@ -10,6 +10,7 @@ import SearchResults from './pages/SearchResults'
 import './custom.scss'
 import AddQuestion from './pages/AddQuestion'
 import QuestionDetails from './pages/QuestionDetails'
+import SignUp from './pages/SignUp'
 export default class App extends Component {
   static displayName = App.name
 
@@ -22,6 +23,7 @@ export default class App extends Component {
           <Route exact path="/typescript" component={HeyWorld} />
           <Route exact path="/search" component={SearchPage} />
           <Route exact path="/ask" component={AddQuestion} />
+          <Route exact path="/signup" component={SignUp} />
           <Route exact path="/search/:searchTerm" component={SearchResults} />
           <Route
             exact
