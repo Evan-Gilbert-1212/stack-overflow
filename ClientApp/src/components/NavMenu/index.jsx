@@ -12,7 +12,6 @@ import { Link, Redirect } from 'react-router-dom'
 import './style.scss'
 import StackOverflowImg from '../../images/stackoverflow.png'
 import ProfileImg from '../../images/default.png'
-import StackExchangeImg from '../../images/stackexchange.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInbox } from '@fortawesome/free-solid-svg-icons'
 import { faTrophy } from '@fortawesome/free-solid-svg-icons'
@@ -65,7 +64,7 @@ export class NavMenu extends Component {
       return (
         <Redirect
           to={{
-            pathname: `/search/?searchTerm=${this.state.searchTerm}`,
+            pathname: `/search/${this.state.searchTerm}`,
           }}
         />
       )

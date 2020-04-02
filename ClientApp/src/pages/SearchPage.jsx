@@ -17,7 +17,7 @@ const SearchPage = () => {
   }
 
   return (
-    <div>
+    <div className="search-parent">
       <div className="search-head">
         <h3>Search</h3>
         <div className="search-head-right">
@@ -27,13 +27,13 @@ const SearchPage = () => {
           </button>
         </div>
       </div>
-      <div className="search-input">
+      <div className="search-page-input">
         <form onSubmit={getRedirect}>
-          <input name="search" onChange={setSearchTerm} />
+          <input className="search-field" onChange={setSearchTerm} />
         </form>
         <button
           className="search-search-button"
-          value={searchTerm}
+          searchTerm={searchTerm}
           onClick={getSearchTerm}
         >
           <a href={`/search/${searchTerm}`}>Search</a>

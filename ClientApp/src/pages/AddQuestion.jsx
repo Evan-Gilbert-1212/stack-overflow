@@ -19,15 +19,13 @@ const AddQuestion = () => {
     })
   }
 
-  const addQuestion = async () => {
-    console.log(question)
+  const saveQuestion = async () => {
     const response = await axios.post('/api/questions', question)
     if (response.status === 201) {
       setSaveResults({
         shouldRedirect: true,
         savedQuestionData: response.data,
       })
-      console.log(response.data)
     } else {
       //failure to add
     }
@@ -75,7 +73,7 @@ const AddQuestion = () => {
             onChange={updateQuestionData}
           ></input>
           <div>
-            <button className="add-question" onClick={addQuestion}>
+            <button className="add-question" onClick={saveQuestion}>
               Post Your Question
             </button>
           </div>
