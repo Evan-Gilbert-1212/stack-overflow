@@ -10,7 +10,9 @@ const SearchResultsPage = props => {
 
   //poll api for results based on user input
   const getQuestions = async () => {
-    const resp = await axios.get(`/api/questions/search/${searchTerm}`)
+    const resp = await axios.get(
+      `/api/questions/search?searchTerm=${searchTerm}`
+    )
     console.log(resp)
     setSearchResults(resp.data)
   }
@@ -23,24 +25,25 @@ const SearchResultsPage = props => {
   }, [])
 
   //render if searchResults exist
-  if (!searchResults) {
-    return <div>Results Empty...</div>
-  } else {
-    return (
-      <div className="search">
-        <div className="search-head">
-          <h3>Questions tagged [{searchTerm}]</h3>
-          <div className="search-head-right">
-            <button className="search-ask-button">Ask Question</button>
-          </div>
+  // if (!searchResults) {
+  //   return <div>Results Empty...</div>
+  // } else {
+  return (
+    <div className="search">
+      <div className="search-head">
+        <h3>Questions tagged [{searchTerm}]</h3>
+        <div className="search-head-right">
+          <button className="search-ask-button">Ask Question</button>
         </div>
-        <div className="results">Result</div>
-        {searchResults.map(result => {
-          return <SearchResult key={result.id} />
-        })}
       </div>
-    )
-  }
+      <div className="results">Result</div>
+      {/* {searchResults.map(result => {
+          return <SearchResult key={result.id} />
+        })} */}
+      <SearchResult></SearchResult>
+    </div>
+  )
 }
+// }
 
 export default SearchResultsPage

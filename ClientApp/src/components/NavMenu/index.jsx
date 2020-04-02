@@ -64,7 +64,7 @@ export class NavMenu extends Component {
       return (
         <Redirect
           to={{
-            pathname: `/search/?searchTerm=${this.state.searchTerm}`,
+            pathname: `/search/${this.state.searchTerm}`,
           }}
         />
       )

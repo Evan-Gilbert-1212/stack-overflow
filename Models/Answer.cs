@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace stack_overflow
 {
@@ -11,6 +12,8 @@ namespace stack_overflow
 
     //navigation
     public int QuestionId { get; set; }
+
+    [JsonIgnore]
     public Question Question { get; set; }
   }
 }

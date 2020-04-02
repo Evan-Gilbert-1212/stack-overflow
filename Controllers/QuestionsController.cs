@@ -25,7 +25,10 @@ namespace stack_overflow.Controllers
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Question>>> GetQuestions()
     {
-      return await _context.Questions.ToListAsync();
+      // return await _context.Questions.ToListAsync();
+
+      //Select * from Questions Join Answers on Question.Id = Answer.ID
+      return await _context.Questions.Include(ques => ques.Answers).ToListAsync();
     }
 
     // GET: api/Questions/5
@@ -41,11 +44,15 @@ namespace stack_overflow.Controllers
 
       return question;
     }
-    [HttpGet("/search/{searchTerm}")]
 
-    public List<Question> GetResult(string searchTerm)
+    //get api/questions/search
+    [HttpGet("/search")]
+
+    public async Task<ActionResult> GetResult(string searchTerm)
     {
-      return _context.Questions.Where(question => question.QuestionText.Contains(searchTerm)).ToList();
+      var results = _context.Questions.Where(question => question.QuestionText.Contains(searchTerm));
+
+      return Ok(await results.ToListAsync());
     }
 
     // PUT: api/Questions/5
