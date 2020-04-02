@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System;
 
-namespace stack_overflow
+namespace stack_overflow.ViewModels
 {
   public class NewUser
   {
