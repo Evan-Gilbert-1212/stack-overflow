@@ -8,6 +8,10 @@ using stack_overflow.Models;
 using stack_overflow.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+using System.Text;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace stack_overflow.Controllers
 {
@@ -48,7 +52,26 @@ namespace stack_overflow.Controllers
       _context.Users.Add(user);
       await _context.SaveChangesAsync();
 
-      return Ok(user);
+      var expirationTime = DateTime.UtcNow.AddHours(4);
+      var tokenDescriptor = new SecurityTokenDescriptor
+      {
+        Subject = new ClaimsIdentity(new[]
+         {
+           new Claim("id", user.Id.ToString()),
+           new Claim("email", user.Email),
+           new Claim("name", user.FullName)
+         }),
+        Expires = expirationTime,
+        SigningCredentials = new SigningCredentials(
+            new SymmetricSecurityKey(Encoding.ASCII.GetBytes("I COULD NOT THING OF SOMETHING CUTE SO THIS WILL HAVE TO DO")),
+            SecurityAlgorithms.HmacSha256Signature
+          )
+      };
+      var tokenHandler = new JwtSecurityTokenHandler();
+      var token = tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
+
+      user.HashedPassword = null;
+      return Ok(new { Token = token, user = user });
     }
   }
 }
