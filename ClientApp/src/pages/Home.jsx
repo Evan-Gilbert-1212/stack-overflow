@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Summary from '../components/Summary'
 import './home.scss'
 import axios from 'axios'
@@ -30,7 +31,9 @@ export function Home() {
             <h2 className="home-top-h1">Top Questions</h2>
           </div>
           <div className="home-top-right">
-            <button className="home-ask-questions">Ask Questions</button>
+            <Link to="/ask">
+              <button className="home-ask-questions">Ask Questions</button>
+            </Link>
           </div>
         </div>
         <div className="home-sort-buttons">
