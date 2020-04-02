@@ -9,6 +9,7 @@ import SearchPage from './pages/SearchPage'
 import SearchResults from './pages/SearchResults'
 import './custom.scss'
 import AddQuestion from './pages/AddQuestion'
+import QuestionDetails from './pages/QuestionDetails'
 export default class App extends Component {
   static displayName = App.name
 
@@ -22,6 +23,11 @@ export default class App extends Component {
           <Route exact path="/search" component={SearchPage} />
           <Route exact path="/ask" component={AddQuestion} />
           <Route exact path="/search/:searchTerm" component={SearchResults} />
+          <Route
+            exact
+            path="/questions/:questionId"
+            component={QuestionDetails}
+          />
           <Route exact path="*" component={NotFound} />
         </Switch>
       </Layout>
