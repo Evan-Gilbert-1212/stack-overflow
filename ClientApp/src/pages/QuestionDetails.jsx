@@ -8,7 +8,7 @@ const QuestionDetails = props => {
 
   const getQuestion = async () => {
     const response = await axios.get(`/api/questions/${questionId}`)
-    console.log(response)
+    console.log(response.data)
     setQuestion(response.data)
   }
 
@@ -18,8 +18,9 @@ const QuestionDetails = props => {
 
   return (
     <div>
-      <h1>This is the Question Details Page...</h1>
-      <h2>{questionId}</h2>
+      <h1 className="question-detail-header">
+        This is the Question Details Page
+      </h1>
       <h2>{question.questionTitle}</h2>
       <h2>{question.questionText}</h2>
       <h2>{question.tags}</h2>
