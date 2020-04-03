@@ -11,6 +11,8 @@ namespace stack_overflow.Models
     public DbSet<Question> Questions { get; set; }
     public DbSet<Answer> Answers { get; set; }
 
+    public DbSet<User> Users { get; set; }
+
     private string ConvertPostConnectionToConnectionString(string connection)
     {
       var _connection = connection.Replace("postgres://", String.Empty);
@@ -23,7 +25,7 @@ namespace stack_overflow.Models
       if (!optionsBuilder.IsConfigured)
       {
         var envConn = Environment.GetEnvironmentVariable("DATABASE_URL");
-        var conn = "server=localhost;database=stack_overflowDatabase;User Id=postgres;Password=dev";
+        var conn = "server=localhost;database=stack_overflowDatabase";
         if (envConn != null)
         {
           conn = ConvertPostConnectionToConnectionString(envConn);

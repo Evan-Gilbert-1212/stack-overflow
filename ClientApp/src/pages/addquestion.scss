@@ -1,23 +1,51 @@
-h1 {
+.add-question-header {
   font-size: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-h2 {
+.add-question-section {
+  box-shadow: 0px 0px 5px black;
+  padding: 1rem;
+}
+
+.add-question-subheader {
   font-size: 1rem;
 }
 
-.question-title {
+.add-question-p {
+  margin-bottom: 0.25rem;
+}
+
+.add-question-title {
   width: 100%;
 }
 
-.question-body {
+.add-question-body {
+  width: 100%;
+  height: 12rem;
+}
+
+.add-question-tags {
   width: 100%;
 }
 
-.question-tags {
-  width: 100%;
+.add-question {
+  background-color: #0395ff;
+  color: white;
+  border-radius: 5px;
 }
 
-input {
+.add-question-title,
+.add-question-tags {
   margin-bottom: 1rem;
+}
+
+textarea {
+  margin-bottom: 1rem;
+}
+
+.add-question {
+  background-color: #0395ff;
+  color: white;
+  border-radius: 5px;
 }
