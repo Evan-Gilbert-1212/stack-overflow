@@ -45,7 +45,7 @@ namespace stack_overflow.Controllers
     [HttpGet("{id}")]
     public async Task<ActionResult<Question>> GetQuestion(int id)
     {
-      var question = await _context.Questions.FindAsync(id);
+      var question = await _context.Questions.Include(question => question.Answers).FirstOrDefaultAsync(q => q.Id == id);
 
       if (question == null)
       {
