@@ -135,6 +135,7 @@
 
 .result-views {
   height: 25%;
+  padding-top: 0.15rem;
 }
 
 .result-votes {
@@ -233,9 +234,7 @@
     object-fit: contain;
     width: 80vw;
   }
-  .search-parent {
-    min-width: 24.063rem;
-  }
+
   .search-field {
     width: 56vw;
   }
@@ -270,7 +269,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    max-width: 45.625rem;
+    width: stretch;
   }
 
   .result-user-and-created {
@@ -278,5 +277,11 @@
   }
   .search-field {
     width: 62vw;
+  }
+  .result-stats-container {
+    font-size: 0.8rem;
+  }
+  .result-question-summary {
+    width: auto;
   }
 }
