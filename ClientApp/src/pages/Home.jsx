@@ -44,7 +44,11 @@ export function Home() {
         {/* <div className="home-question-wrapper"> */}
         {/* <ul className="summary-list"> */}
         {question.map(question => {
-          return <Summary question={question} />
+          return (
+            <a href={`/questions/${question.id}`}>
+              <Summary question={question} />
+            </a>
+          )
         })}
         {/* </div> */}
       </>

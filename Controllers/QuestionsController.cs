@@ -31,6 +31,16 @@ namespace stack_overflow.Controllers
       return await _context.Questions.Include(ques => ques.Answers).ToListAsync();
     }
 
+    //get api/questions/search
+    [HttpGet("search")]
+
+    public async Task<ActionResult<IEnumerable<Question>>> GetResult(string searchTerm)
+    {
+      var results = _context.Questions.Where(question => question.QuestionText.Contains(searchTerm));
+
+      return await results.ToListAsync();
+    }
+
     // GET: api/Questions/5
     [HttpGet("{id}")]
     public async Task<ActionResult<Question>> GetQuestion(int id)
@@ -44,17 +54,6 @@ namespace stack_overflow.Controllers
 
       return question;
     }
-
-    //get api/questions/search
-    [HttpGet("/search")]
-
-    public async Task<ActionResult> GetResult(string searchTerm)
-    {
-      var results = _context.Questions.Where(question => question.QuestionText.Contains(searchTerm));
-
-      return Ok(await results.ToListAsync());
-    }
-
     // PUT: api/Questions/5
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for
     // more details see https://aka.ms/RazorPagesCRUD.
