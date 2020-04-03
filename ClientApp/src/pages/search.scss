@@ -212,7 +212,8 @@
 .result-tags {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  object-fit: contain;
   background-color: #e1ecf4;
   margin: 0rem 0.5rem 0rem 0.5rem;
   padding: 5px 5px;
@@ -284,4 +285,9 @@
   .result-question-summary {
     width: auto;
   }
+}
+
+.result-tag {
+  margin: 0.1rem;
+  padding: 0;
 }
