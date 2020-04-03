@@ -11,6 +11,7 @@ import './custom.scss'
 import AddQuestion from './pages/AddQuestion'
 import QuestionDetails from './pages/QuestionDetails'
 import SignUp from './pages/SignUp'
+import Login from './pages/Login'
 export default class App extends Component {
   static displayName = App.name
 
@@ -24,6 +25,7 @@ export default class App extends Component {
           <Route exact path="/search" component={SearchPage} />
           <Route exact path="/ask" component={AddQuestion} />
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/login" component={Login} />
           <Route exact path="/search/:searchTerm" component={SearchResults} />
           <Route
             exact
