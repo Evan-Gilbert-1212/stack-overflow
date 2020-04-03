@@ -1,41 +1,88 @@
 import React, { useState, useEffect } from 'react'
 import './QuestionDetails.scss'
 import axios from 'axios'
+import Answer from '../components/Answer'
 
 const QuestionDetails = props => {
   const questionId = props.match.params.questionId
-  const [question, setQuestion] = useState({})
-  const [questionTags, setQuestionTags] = useState([])
+  const [question, setQuestion] = useState({
+    questionData: {},
+    isLoaded: false,
+  })
+  const [answerText, setAnswerText] = useState('')
 
   const getQuestion = async () => {
     const response = await axios.get(`/api/questions/${questionId}`)
-    setQuestion(response.data)
-    setQuestionTags(response.data.tags.replace(' ', '').split(','))
+    setQuestion({
+      questionData: response.data,
+      isLoaded: true,
+    })
+  }
+
+  const updateAnswerText = async e => {
+    setAnswerText(e.target.value)
+  }
+
+  const postAnswer = async () => {
+    const response = await axios.post('/api/answers', {
+      answertext: answerText,
+      questionid: parseInt(questionId),
+    })
+    getQuestion()
+    setAnswerText('')
   }
 
   useEffect(() => {
     getQuestion()
   }, [])
 
-  return (
-    <div>
-      <h1 className="question-detail-header">{question.questionTitle}</h1>
-      <div className="question-detail-seperator"></div>
-      <p className="question-detail-body">{question.questionText}</p>
-      <div className="question-detail-tags">
-        {questionTags.map(tag => {
-          return <div>{tag}</div>
-        })}
-      </div>
-      {/* <p>{question.questionScore}</p>
-      <p>{question.questionPostedOn}</p> */}
-      <h3 className="answer-heading">Your Answer</h3>
-      <textarea className="question-answer-entry"></textarea>
+  if (!question.isLoaded) {
+    return <h2>Loading...</h2>
+  } else {
+    return (
       <div>
-        <button className="add-answer">Post Your Answer</button>
+        <h1 className="question-detail-header">
+          {question.questionData.questionTitle}
+        </h1>
+        <div className="question-detail-seperator"></div>
+        <p className="question-detail-body">
+          {question.questionData.questionText}
+        </p>
+        <div className="question-detail-tags">
+          {question.questionData.tags
+            .replace(' ', '')
+            .split(',')
+            .map(tag => {
+              return <div>{tag}</div>
+            })}
+        </div>
+        <div>
+          <h4 className="question-answer-header">Answers</h4>
+          {console.log(question.questionData)}
+          {question.questionData.answers.length > 0 ? (
+            question.questionData.answers.map(answer => {
+              return <Answer answerText={answer.answerText} />
+            })
+          ) : (
+            <p>No Answers Yet</p>
+          )}
+        </div>
+        {/* <p>{question.questionScore}</p>
+        <p>{question.questionPostedOn}</p> */}
+        <h3 className="answer-heading">Your Answer</h3>
+        <textarea
+          className="question-answer-entry"
+          value={answerText}
+          onChange={updateAnswerText}
+        ></textarea>
+        <div>
+          <button className="add-answer" onClick={postAnswer}>
+            Post Your Answer
+          </button>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default QuestionDetails
