@@ -4,6 +4,8 @@ import '../pages/home.scss'
 const Summary = props => {
   const { question } = props
 
+  console.log(question)
+
   return (
     <>
       <div className="home-question-wrapper">
