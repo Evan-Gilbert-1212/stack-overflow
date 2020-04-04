@@ -26,12 +26,6 @@ html {
 
 nav {
   height: 50px;
-  justify-content: start;
-}
-
-.profile-icon {
-  height: 25px;
-  width: 25px;
 }
 
 .se-icon {
@@ -39,13 +33,18 @@ nav {
   width: 18px;
 }
 
-.nav-button {
+.profile-button {
   margin: 0;
   height: 50px;
   top: 0;
   border: 0;
-  background-color: white;
-  color: grey;
+  background-color: #fafafb;
+  padding-right: 2rem;
+}
+
+.profile-icon {
+  height: 25px;
+  width: 25px;
 }
 
 .profile-reputation {
@@ -57,5 +56,24 @@ nav {
 header {
   position: fixed;
   width: 100vw;
-  background-color: white;
+  background-color: #fafafb;
+  box-shadow: 0px 0px 5px lightgray;
+}
+
+.orange-bar {
+  height: 3px;
+  width: 100vw;
+  background-color: #f48024;
+}
+
+.header-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-logo {
+  padding-left: 1rem;
+  height: 32px;
+  width: auto;
 }

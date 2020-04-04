@@ -50,7 +50,7 @@ const QuestionDetails = props => {
         </p>
         <div className="question-detail-tags">
           {question.questionData.tags
-            .replace(' ', '')
+            .replace(/ /g, '')
             .split(',')
             .map(tag => {
               return <div>{tag}</div>
@@ -58,7 +58,6 @@ const QuestionDetails = props => {
         </div>
         <div>
           <h4 className="question-answer-header">Answers</h4>
-          {console.log(question.questionData)}
           {question.questionData.answers.length > 0 ? (
             question.questionData.answers.map(answer => {
               return <Answer answerText={answer.answerText} />
@@ -67,8 +66,6 @@ const QuestionDetails = props => {
             <p>No Answers Yet</p>
           )}
         </div>
-        {/* <p>{question.questionScore}</p>
-        <p>{question.questionPostedOn}</p> */}
         <h3 className="answer-heading">Your Answer</h3>
         <textarea
           className="question-answer-entry"
