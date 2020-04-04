@@ -17,7 +17,8 @@ code {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: white;
 }
 

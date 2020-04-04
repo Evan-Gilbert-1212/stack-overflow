@@ -17,7 +17,6 @@ export function Home() {
   }
 
   useEffect(() => {
-    console.log('inside')
     getAllQuestions()
   }, [])
 

@@ -28,7 +28,7 @@ const SearchResultsPage = props => {
   if (searchResults.length === 0) {
     return <div>Results Empty...</div>
   } else if (!loaded) {
-    return <div>Results Empty...</div>
+    return <div>Loading...</div>
   } else {
     return (
       <div className="search">
@@ -46,49 +46,6 @@ const SearchResultsPage = props => {
           return (
             <a href={`/questions/${question.id}`}>
               <Summary question={question} />
-              {/* <div className="result-question-summary">
-                <div className="result-stats-container">
-                  <div className="result-stats">
-                    <div className="result-votes">
-                      <div className="result-vote-box">
-                        <strong>{result.questionScore || 0}</strong>
-                        <div className="result-vote-box-text">votes</div>
-                      </div>
-                    </div>
-                    <div className="result-answers">
-                      <strong>{result.questionAnswers || 0}</strong>
-                      <div className="result-answers-text">answers</div>
-                    </div>
-                  </div>
-                  <div className="result-views">0 views</div>
-                </div>
-                <div className="result-summary">
-                  <div className="result-summary-top">
-                    <div className="result-question-title">
-                      {result.questionTitle}
-                    </div>
-                    <div className="result-question-text">
-                      {result.questionText}
-                    </div>
-                  </div>
-                  <div className="result-summary-bottom">
-                    <div className="result-tags">
-                      {result.tags
-                        .replace(' ', '')
-                        .split(',')
-                        .map(tag => {
-                          return <div className="result-tag">{tag}</div>
-                        })}
-                    </div>
-                    <div className="result-user-and-created">
-                      <div className="result-created">
-                        asked {result.questionDate}
-                      </div>
-                      <div className="result-user">userName</div>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </a>
           )
         })}
