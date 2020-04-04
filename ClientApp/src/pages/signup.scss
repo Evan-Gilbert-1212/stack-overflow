@@ -1,36 +1,97 @@
-.signup-page {
-  display: flex;
-  flex-direction: row;
-  background-color: white;
-  width: 25%;
-  height: 100%;
-  padding: 1rem;
-  align-content: inherit;
-  margin: auto;
+body {
+  background-color: #eff0f1;
 }
 
-.signup-page input {
+.signup-page {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-top: 17rem;
+}
+
+.middle-pane {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border-radius: 8px;
+  padding-left: 0.5rem;
+}
+
+.signup-button {
+  background-color: #0395ff;
+  color: white;
+  margin: 0rem 1rem 1rem 1rem;
+  width: 12vw;
+}
+
+.signup-email-section {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 1rem;
+}
+
+.signup-display-section {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 1rem;
+}
+
+.signup-password-section {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 1rem;
+}
+
+.middle-pane input {
   border-style: solid;
   border-color: #bbc0c4;
   border-width: 1px;
   border-radius: 3px;
 }
 
-.signup-page label {
+.signup-display-label {
+  margin-left: 1rem;
   font-weight: bold;
+  margin-top: 1rem;
+  width: 10vw;
 }
 
-.create-account-button {
-  background-color: #0395ff;
-  color: white;
+.signup-password-label {
+  margin-left: 1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  width: 10vw;
+}
+
+.signup-email-label {
+  margin-left: 1rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  width: 10vw;
+}
+
+.signup-display-input {
+  margin: 0rem 1rem 0rem 1rem;
+  width: 10vw;
+}
+
+.signup-password-input {
   margin: 0rem 1rem 1rem 1rem;
   width: 10vw;
-  margin-top: 1rem;
 }
 
-.middle-pane {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  width: 183px;
+.signup-email-input {
+  margin: 0rem 1rem 0rem 1rem;
+  width: 10vw;
+}
+
+.sign-up {
+  text-align: center;
+  margin-top: 1rem;
 }

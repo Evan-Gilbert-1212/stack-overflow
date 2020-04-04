@@ -19,31 +19,42 @@ const SignUp = () => {
   return (
     <div className="signup-page">
       <div className="middle-pane">
-        {/* <div className="container"> */}
+        <section className="signup-display-section">
+          <label className="signup-display-label" htmlFor="">
+            Display Name
+          </label>
+          <input
+            className="signup-display-input"
+            type="text"
+            value={fullName}
+            onChange={e => setFullName(e.target.value)}
+          />
+        </section>
+        <section className="signup-email-section">
+          <label className="signup-email-label" htmlFor="">
+            Email
+          </label>
+          <input
+            className="signup-email-input"
+            type="text"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+        </section>
+        <section className="signup-password-section">
+          <label className="signup-password-label" htmlFor="">
+            Password
+          </label>
+          <input
+            className="signup-password-input"
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+        </section>
 
-        <label htmlFor="">Display Name</label>
-        <input
-          type="text"
-          value={fullName}
-          onChange={e => setFullName(e.target.value)}
-        />
-
-        <label htmlFor="">Email</label>
-        <input
-          type="text"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-
-        <label htmlFor="">Password</label>
-        <input
-          type="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-
-        <button className="create-account-button" onClick={createNewUserAPI}>
-          Create Account
+        <button className="signup-button" onClick={createNewUserAPI}>
+          Sign Up
         </button>
       </div>
       {/* </div> */}
