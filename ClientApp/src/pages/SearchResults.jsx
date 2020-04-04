@@ -70,7 +70,7 @@ const SearchResultsPage = props => {
                       .replace(' ', '')
                       .split(',')
                       .map(tag => {
-                        return <div>{tag}</div>
+                        return <div className="result-tag">{tag}</div>
                       })}
                   </div>
                   <div className="result-user-and-created">
