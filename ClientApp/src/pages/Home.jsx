@@ -14,6 +14,7 @@ export function Home() {
     // })
     setQuestion(resp.data)
     console.log(resp.data)
+    console.log('Global Variable - ' + window.$userToken)
   }
 
   useEffect(() => {
