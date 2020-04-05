@@ -19,37 +19,35 @@ const QuestionDetails = props => {
       questionData: response.data,
       isLoaded: true,
     })
-    setQuestionScore(response.data.questionScore)
   }
   let buttonVal = 0
-  //set var to use state for the questionScores
-  const [questionScore, setQuestionScore] = useState()
   //set var to use state for the result returned from the API
   const [putResult, setPutResult] = useState()
-  //set function to update the score when a vote button is clicked
-  const updateScore = e => {
-    if (e.target.value === 'up') {
-      buttonVal = 1
-    } else {
-      buttonVal = -1
-    }
-    putScoreToAPI()
-  }
 
   //declare variable for the results of possible bad responses
   let errorMessage = ''
-  //function to update the score of a question
-  console.log(questionScore)
-  const putScoreToAPI = async () => {
-    const respPut = await axios.put(
-      `/api/questions/score?id=${questionId}&buttonVal=${buttonVal}`
-    )
-    console.log(questionScore)
+  //function to upvote the score of a question
+  const upvoteToAPI = async () => {
+    const respPut = await axios.put(`/api/questions/upvote/${questionId}`)
+    console.log(respPut)
     if (respPut.status === 201) {
       setPutResult(respPut.data)
     } else {
       errorMessage = respPut.data
     }
+    getQuestion()
+  }
+
+  //function to downvote the score of a question
+  const downvoteToAPI = async () => {
+    const respPut = await axios.put(`/api/questions/downvote/${questionId}`)
+    console.log(respPut)
+    if (respPut.status === 201) {
+      setPutResult(respPut.data)
+    } else {
+      errorMessage = respPut.data
+    }
+    getQuestion()
   }
 
   const updateAnswerText = async e => {
@@ -67,7 +65,7 @@ const QuestionDetails = props => {
 
   useEffect(() => {
     getQuestion()
-  }, [questionScore])
+  }, [])
 
   if (!question.isLoaded) {
     return <h2>Loading...</h2>
@@ -79,17 +77,13 @@ const QuestionDetails = props => {
         <article className="question-and-scoring">
           <section className="question-scoring">
             <div className="upvote-div">
-              <button onClick={updateScore} value="up">
-                Upvote
-              </button>
+              <button onClick={upvoteToAPI}>Upvote</button>
             </div>
             <div className="question-score">
               {question.questionData.questionScore}
             </div>
             <div className="downvote-div">
-              <button onClick={updateScore} value="down">
-                Downvote
-              </button>
+              <button onClick={downvoteToAPI}>Downvote</button>
             </div>
           </section>
           <section className="question-sans-scoring">
@@ -111,38 +105,72 @@ const QuestionDetails = props => {
           </section>
         </article>
         <div>
-          {window.$userToken === '' ? (
-            <div>You must be logged in to post an answer.</div>
-          ) : (
-            <>
-              <div>
-                <h4 className="question-answer-header">Answers</h4>
-                {question.questionData.answers.length > 0 ? (
-                  question.questionData.answers.map(answer => {
-                    return <Answer answerText={answer.answerText} />
-                  })
-                ) : (
-                  <p>No Answers Yet</p>
-                )}
-              </div>
-              <h3 className="answer-heading">Your Answer</h3>
-              <textarea
-                className="question-answer-entry"
-                value={answerText}
-                onChange={updateAnswerText}
-              ></textarea>
-              <div>
-                <button className="add-answer" onClick={postAnswer}>
-                  Post Your Answer
-                </button>
-              </div>
-            </>
-          )}
-          )
+          <div>
+            <h4 className="question-answer-header">Answers</h4>
+            {question.questionData.answers.length > 0 ? (
+              question.questionData.answers.map(answer => {
+                return (
+                  <Answer
+                    answerId={answer.id}
+                    answerText={answer.answerText}
+                    answerPostedOn={answer.answerPostedOn}
+                    answerScore={answer.answerScore}
+                  />
+                )
+              })
+            ) : (
+              <p>No Answers Yet</p>
+            )}
+          </div>
+          <h3 className="answer-heading">Your Answer</h3>
+          <textarea
+            className="question-answer-entry"
+            value={answerText}
+            onChange={updateAnswerText}
+          ></textarea>
+          <div>
+            <button className="add-answer" onClick={postAnswer}>
+              Post Your Answer
+            </button>
+          </div>
         </div>
       </div>
     )
   }
 }
+
+//move back to line 108 after we get token tracking down
+// {localStorage.getItem('token') === '' ? (
+//   <div>You must be logged in to post an answer.</div>
+// ) : (
+//   <>
+//     <div>
+//       <h4 className="question-answer-header">Answers</h4>
+//       {question.questionData.answers.length > 0 ? (
+//         question.questionData.answers.map(answer => {
+//           return <Answer answerText={answer.answerText} />
+//         })
+//       ) : (
+//         <p>No Answers Yet</p>
+//       )}
+//     </div>
+//     <h3 className="answer-heading">Your Answer</h3>
+//     <textarea
+//       className="question-answer-entry"
+//       value={answerText}
+//       onChange={updateAnswerText}
+//     ></textarea>
+//     <div>
+//       <button className="add-answer" onClick={postAnswer}>
+//         Post Your Answer
+//       </button>
+//     </div>
+//   </>
+// )}
+// </div>
+// </div>
+// )
+// }
+// }
 
 export default QuestionDetails

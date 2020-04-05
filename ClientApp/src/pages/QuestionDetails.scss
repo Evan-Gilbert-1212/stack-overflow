@@ -78,18 +78,35 @@
 
 .upvote-div {
   height: 40%;
-  // background-image: url('../images/up-grey.png');
-  // background-repeat: no-repeat;
   background-size: contain;
 }
 
 .downvote-div {
   height: 40%;
-  // background-image: url('../images/down-grey.png');
-  // background-repeat: no-repeat;
-  // background-size: contain;
 }
 
 .question-score {
   height: 20%;
+}
+
+.answer-and-scoring {
+  display: flex;
+  flex-direction: row;
+  height: 8rem;
+}
+
+.answer-scoring {
+  display: flex;
+  flex-direction: column;
+}
+
+.answer-upvote-div {
+  height: 40%;
+}
+.answer-score {
+  height: 20%;
+}
+
+.answer-downvote-div {
+  height: 40%;
 }

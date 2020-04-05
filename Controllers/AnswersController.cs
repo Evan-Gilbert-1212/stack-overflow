@@ -42,6 +42,63 @@ namespace stack_overflow.Controllers
       return answer;
     }
 
+    [HttpPut("upvote/{id}")]
+    public async Task<IActionResult> PutAnswerUp(int id)
+    {
+      var answerToScore = await _context.Answers.FirstOrDefaultAsync(d => d.Id == id);
+
+      answerToScore.AnswerScore += 1;
+
+      try
+      {
+        await _context.SaveChangesAsync();
+      }
+      catch (DbUpdateConcurrencyException)
+      {
+        if (!AnswerExists(id))
+        {
+          return NotFound();
+        }
+        else
+        {
+          throw;
+        }
+      }
+      Console.WriteLine(answerToScore.AnswerScore);
+
+      return NoContent();
+
+    }
+
+
+    [HttpPut("downvote/{id}")]
+    public async Task<IActionResult> PutAnswerDown(int id)
+    {
+      var answerToScore = await _context.Answers.FirstOrDefaultAsync(d => d.Id == id);
+
+      answerToScore.AnswerScore -= 1;
+
+      try
+      {
+        await _context.SaveChangesAsync();
+      }
+      catch (DbUpdateConcurrencyException)
+      {
+        if (!AnswerExists(id))
+        {
+          return NotFound();
+        }
+        else
+        {
+          throw;
+        }
+      }
+      Console.WriteLine(answerToScore.AnswerScore);
+
+      return NoContent();
+
+    }
+
     // PUT: api/Answers/5
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for
     // more details see https://aka.ms/RazorPagesCRUD.
