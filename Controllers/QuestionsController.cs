@@ -58,14 +58,14 @@ namespace stack_overflow.Controllers
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for
     // more details see https://aka.ms/RazorPagesCRUD.
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutQuestion(int id, Question question)
+    public async Task<IActionResult> PutQuestion(int id, int questionScore)
     {
       if (id != question.Id)
       {
         return BadRequest();
       }
 
-      _context.Entry(question).State = EntityState.Modified;
+      _context.Entry(questionScore).State = EntityState.Modified;
 
       try
       {
@@ -82,8 +82,9 @@ namespace stack_overflow.Controllers
           throw;
         }
       }
-
+      Console.WriteLine(Questions.QuestionScore);
       return NoContent();
+
     }
 
     // POST: api/Questions
