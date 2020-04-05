@@ -21,6 +21,7 @@ const QuestionDetails = props => {
     })
     setQuestionScore(response.data.questionScore)
   }
+  let buttonVal = 0
   //set var to use state for the questionScores
   const [questionScore, setQuestionScore] = useState()
   //set var to use state for the result returned from the API
@@ -28,27 +29,26 @@ const QuestionDetails = props => {
   //set function to update the score when a vote button is clicked
   const updateScore = e => {
     if (e.target.value === 'up') {
-      setQuestionScore(question.questionData.questionScore + 1)
+      buttonVal = 1
     } else {
-      setQuestionScore(question.questionData.questionScore - 1)
+      buttonVal = -1
     }
     putScoreToAPI()
   }
 
   //declare variable for the results of possible bad responses
-  const errorMessage = ''
+  let errorMessage = ''
   //function to update the score of a question
   console.log(questionScore)
   const putScoreToAPI = async () => {
-    const respPut = await axios.put('/api/questions', {
-      questionid: parseInt(questionId),
-      questionscore: parseInt(questionScore),
-    })
+    const respPut = await axios.put(
+      `/api/questions/score?id=${questionId}&buttonVal=${buttonVal}`
+    )
     console.log(questionScore)
     if (respPut.status === 201) {
-      setPutResult(respPut.results)
+      setPutResult(respPut.data)
     } else {
-      errorMessage = respPut.results.error
+      errorMessage = respPut.data
     }
   }
 
