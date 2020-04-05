@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './search.scss'
+import { Link } from 'react-router-dom'
+import Summary from '../components/Summary'
 
 const SearchResultsPage = props => {
   //set vars for use of state
@@ -26,19 +28,23 @@ const SearchResultsPage = props => {
   if (searchResults.length === 0) {
     return <div>Results Empty...</div>
   } else if (!loaded) {
-    return <div>Results Empty...</div>
+    return <div>Loading...</div>
   } else {
     return (
       <div className="search">
         <div className="search-head">
           <h3>Questions tagged [{searchTerm}]</h3>
           <div className="search-head-right">
-            <button className="search-ask-button">Ask Question</button>
+            <Link to="/ask">
+              <button className="search-ask-button">Ask Question</button>
+            </Link>
           </div>
         </div>
-        <div className="results">Result</div>
-        {searchResults.map(result => {
+        <div className="results">{searchResults.length} Result(s)</div>
+        <hr />
+        {searchResults.map(question => {
           return (
+<<<<<<< HEAD
             <a href={`/questions/${result.id}`}>
               <div className="result-question-summary">
                 <div className="result-stats-container">
@@ -83,6 +89,10 @@ const SearchResultsPage = props => {
                   </div>
                 </div>
               </div>
+=======
+            <a href={`/questions/${question.id}`}>
+              <Summary question={question} />
+>>>>>>> master
             </a>
           )
         })}

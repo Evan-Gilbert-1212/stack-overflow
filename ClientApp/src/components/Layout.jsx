@@ -7,13 +7,13 @@ export function Layout(props) {
     <div>
       <NavMenu />
       <div className="main-page">
-        <div className="leftBar">Left Side</div>
+        {/* <div className="leftBar">Left Side</div> */}
         <div className="rightbar">
           <Container>{props.children}</Container>
         </div>
-        <div className="far-right" style={{}}>
+        {/* <div className="far-right" style={{}}>
           fsdaasdfasdfasdfsdf
-        </div>
+        </div> */}
       </div>
     </div>
   )

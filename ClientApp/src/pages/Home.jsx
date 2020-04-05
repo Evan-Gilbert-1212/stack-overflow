@@ -14,10 +14,10 @@ export function Home() {
     // })
     setQuestion(resp.data)
     console.log(resp.data)
+    console.log('Global Variable - ' + window.$userToken)
   }
 
   useEffect(() => {
-    console.log('inside')
     getAllQuestions()
   }, [])
 
@@ -32,7 +32,7 @@ export function Home() {
           </div>
           <div className="home-top-right">
             <Link to="/ask">
-              <button className="home-ask-questions">Ask Questions</button>
+              <button className="home-ask-questions">Ask Question</button>
             </Link>
           </div>
         </div>

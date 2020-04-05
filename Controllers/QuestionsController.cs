@@ -36,7 +36,7 @@ namespace stack_overflow.Controllers
 
     public async Task<ActionResult<IEnumerable<Question>>> GetResult(string searchTerm)
     {
-      var results = _context.Questions.Where(question => question.QuestionText.Contains(searchTerm));
+      var results = _context.Questions.Include(question => question.Answers).Where(question => question.QuestionText.Contains(searchTerm));
 
       return await results.ToListAsync();
     }

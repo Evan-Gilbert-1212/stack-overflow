@@ -13,7 +13,7 @@ const Summary = props => {
         </div>
         <div className="vote-answer">
           <p>{question.answers.length}</p>
-          <p>answer</p>
+          <p>answers</p>
         </div>
         <div className="vote-views">
           <p>0</p>
@@ -21,14 +21,20 @@ const Summary = props => {
         </div>
         <div className="question-area">
           <div className="question-area-top">
-            <div className="bounty">+50</div>
             <p className="question-summary">{question.questionText}</p>
           </div>
           <div className="question-area-bottom">
-            <div className="tags">
-              <div>openmp</div>
-              <div>llvm</div>
-              <div>llvm-clang</div>
+            <div className="question-detail-tags">
+              {question.tags != null ? (
+                question.tags
+                  .replace(/ /g, '')
+                  .split(',')
+                  .map(tag => {
+                    return <div>{tag}</div>
+                  })
+              ) : (
+                <></>
+              )}
             </div>
             <div className="contributor">
               <p>asked/modified/answered 34 secs ago D. Tulloch</p>
