@@ -5,7 +5,9 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 
-window.$userToken = '' //global variable
+localStorage.setItem('token', '')
+localStorage.setItem('email', '')
+localStorage.setItem('userId', '')
 
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href')
 const rootElement = document.getElementById('root')

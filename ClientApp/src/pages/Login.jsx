@@ -26,11 +26,12 @@ const Login = () => {
         if (response.status === 200) {
           setSuccessLogin({
             loggedIN: true,
-            // token: response.token,
-            // Set global token
+            //token: response.data.token,
           })
-          window.$userToken = response.data.token
-          console.log(window.$userToken)
+          localStorage.setItem('token', response.data.token)
+          localStorage.setItem('email', response.data.user.email)
+          localStorage.setItem('userId', response.data.user.id)
+          console.log(localStorage.getItem('userId'))
         } else {
           // do something else here
         }
@@ -47,7 +48,6 @@ const Login = () => {
         to={{
           // pathname: `/{returnpage}`,
           pathname: `/`,
-          // state: { token: successLogin.token },
         }}
       />
     )

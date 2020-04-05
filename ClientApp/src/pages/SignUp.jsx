@@ -26,6 +26,9 @@ const SignUp = () => {
           setWasSuccessfullyCreated({
             shouldRedirect: true,
           })
+          localStorage.setItem('token', response.data.token)
+          localStorage.setItem('email', response.data.email)
+          localStorage.setItem('userId', response.data.Id)
         } else {
           // do something else here
         }

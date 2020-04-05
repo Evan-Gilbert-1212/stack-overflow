@@ -9,12 +9,7 @@ export function Home() {
 
   const getAllQuestions = async () => {
     const resp = await axios.get('/api/Questions')
-    // setQuestion(resp.data, () => {
-    //   console.log(question)
-    // })
     setQuestion(resp.data)
-    console.log(resp.data)
-    console.log('Global Variable - ' + window.$userToken)
   }
 
   useEffect(() => {
@@ -44,8 +39,6 @@ export function Home() {
           <button>Month</button>
         </div>
         <hr />
-        {/* <div className="home-question-wrapper"> */}
-        {/* <ul className="summary-list"> */}
         {question.map(question => {
           return (
             <a href={`/questions/${question.id}`}>
@@ -53,7 +46,6 @@ export function Home() {
             </a>
           )
         })}
-        {/* </div> */}
       </>
     )
   }
