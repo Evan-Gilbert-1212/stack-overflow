@@ -53,3 +53,60 @@
 .answer-section {
   margin-left: 10px;
 }
+
+.question-and-scoring {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.question-scoring {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 20%;
+  justify-content: space-evenly;
+}
+
+.question-scoring > img {
+  object-fit: contain;
+}
+
+.question-sans-scoring {
+  width: 80%;
+}
+
+.upvote-div {
+  height: 40%;
+  background-size: contain;
+}
+
+.downvote-div {
+  height: 40%;
+}
+
+.question-score {
+  height: 20%;
+}
+
+.answer-and-scoring {
+  display: flex;
+  flex-direction: row;
+  height: 8rem;
+}
+
+.answer-scoring {
+  display: flex;
+  flex-direction: column;
+}
+
+.answer-upvote-div {
+  height: 40%;
+}
+.answer-score {
+  height: 20%;
+}
+
+.answer-downvote-div {
+  height: 40%;
+}

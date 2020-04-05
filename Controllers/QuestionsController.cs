@@ -57,15 +57,12 @@ namespace stack_overflow.Controllers
     // PUT: api/Questions/5
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for
     // more details see https://aka.ms/RazorPagesCRUD.
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutQuestion(int id, Question question)
+    [HttpPut("upvote/{id}")]
+    public async Task<IActionResult> PutQuestionUp(int id)
     {
-      if (id != question.Id)
-      {
-        return BadRequest();
-      }
+      var questionToScore = await _context.Questions.FirstOrDefaultAsync(d => d.Id == id);
 
-      _context.Entry(question).State = EntityState.Modified;
+      questionToScore.QuestionScore += 1;
 
       try
       {
@@ -82,9 +79,39 @@ namespace stack_overflow.Controllers
           throw;
         }
       }
+      Console.WriteLine(questionToScore.QuestionScore);
 
       return NoContent();
+
     }
+    [HttpPut("downvote/{id}")]
+    public async Task<IActionResult> PutQuestionDown(int id)
+    {
+      var questionToScore = await _context.Questions.FirstOrDefaultAsync(d => d.Id == id);
+
+      questionToScore.QuestionScore -= 1;
+
+      try
+      {
+        await _context.SaveChangesAsync();
+      }
+      catch (DbUpdateConcurrencyException)
+      {
+        if (!QuestionExists(id))
+        {
+          return NotFound();
+        }
+        else
+        {
+          throw;
+        }
+      }
+      Console.WriteLine(questionToScore.QuestionScore);
+
+      return NoContent();
+
+    }
+
 
     // POST: api/Questions
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for
