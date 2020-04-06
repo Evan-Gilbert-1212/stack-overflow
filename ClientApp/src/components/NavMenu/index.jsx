@@ -3,11 +3,6 @@ import { Link, Redirect } from 'react-router-dom'
 import './style.scss'
 import StackOverflowImg from '../../images/stackoverflow.png'
 import ProfileImg from '../../images/default.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInbox } from '@fortawesome/free-solid-svg-icons'
-import { faTrophy } from '@fortawesome/free-solid-svg-icons'
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
-import StackExchange from '@fortawesome/fontawesome-free/svgs/brands/stack-exchange.svg'
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name
@@ -79,30 +74,26 @@ export class NavMenu extends Component {
                 onChange={this.setSearchTerm}
               ></input>
             </form>
-            <button className="profile-button">
-              <img
-                className="profile-icon"
-                src={ProfileImg}
-                alt="profile icon"
-              />
-            </button>
+            {console.log(localStorage.getItem('userId'))}
+            {localStorage.getItem('userId').length > 0 ? (
+              <button className="profile-button">
+                <img
+                  className="profile-icon"
+                  src={ProfileImg}
+                  alt="profile icon"
+                />
+              </button>
+            ) : (
+              <div className="nav-buttons">
+                <a href="/login">
+                  <button className="nav-login-button">Log In</button>
+                </a>
+                <a href="/signup">
+                  <button className="nav-signup-button">Sign Up</button>
+                </a>
+              </div>
+            )}
           </div>
-          {/* <button className="nav-button">
-                  <FontAwesomeIcon icon={faInbox} />
-                </button>
-                <button className="nav-button">
-                  <FontAwesomeIcon icon={faTrophy} />
-                </button>
-                <button className="nav-button">
-                  <FontAwesomeIcon icon={faQuestionCircle} />
-                </button>
-                <button className="nav-button">
-                  <img
-                    className="se-icon"
-                    src={StackExchange}
-                    alt="profile icon"
-                  />
-                </button> */}
         </header>
       )
     }
