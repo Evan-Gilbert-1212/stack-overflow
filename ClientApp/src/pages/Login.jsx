@@ -29,8 +29,8 @@ const Login = () => {
             // token: response.token,
             // Set global token
           })
-          window.$userToken = response.data.token
-          console.log(window.$userToken)
+          localStorage.setItem('token', response.data.token)
+          console.log(localStorage.getItem('token'))
         } else {
           // do something else here
         }

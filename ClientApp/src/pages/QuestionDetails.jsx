@@ -77,13 +77,17 @@ const QuestionDetails = props => {
         <article className="question-and-scoring">
           <section className="question-scoring">
             <div className="upvote-div">
-              <button onClick={upvoteToAPI}>Upvote</button>
+              <button className="vote-buttons" onClick={upvoteToAPI}>
+                +1
+              </button>
             </div>
             <div className="question-score">
               {question.questionData.questionScore}
             </div>
             <div className="downvote-div">
-              <button onClick={downvoteToAPI}>Downvote</button>
+              <button className="vote-buttons" onClick={downvoteToAPI}>
+                -1
+              </button>
             </div>
           </section>
           <section className="question-sans-scoring">
@@ -105,72 +109,45 @@ const QuestionDetails = props => {
           </section>
         </article>
         <div>
-          <div>
-            <h4 className="question-answer-header">Answers</h4>
-            {question.questionData.answers.length > 0 ? (
-              question.questionData.answers.map(answer => {
-                return (
-                  <Answer
-                    answerId={answer.id}
-                    answerText={answer.answerText}
-                    answerPostedOn={answer.answerPostedOn}
-                    answerScore={answer.answerScore}
-                  />
-                )
-              })
-            ) : (
-              <p>No Answers Yet</p>
-            )}
-          </div>
-          <h3 className="answer-heading">Your Answer</h3>
-          <textarea
-            className="question-answer-entry"
-            value={answerText}
-            onChange={updateAnswerText}
-          ></textarea>
-          <div>
-            <button className="add-answer" onClick={postAnswer}>
-              Post Your Answer
-            </button>
-          </div>
+          {localStorage.getItem('token') === '' ? (
+            <div>You must be logged in to post an answer.</div>
+          ) : (
+            <>
+              <div>
+                <h4 className="question-answer-header">Answers</h4>
+                {question.questionData.answers.length > 0 ? (
+                  question.questionData.answers.map(answer => {
+                    return (
+                      <Answer
+                        key={answer.id}
+                        id={answer.id}
+                        answerScore={answer.answerScore}
+                        answerText={answer.answerText}
+                        answerPostedOn={answer.answerPostedOn}
+                      />
+                    )
+                  })
+                ) : (
+                  <p>No Answers Yet</p>
+                )}
+              </div>
+              <h3 className="answer-heading">Your Answer</h3>
+              <textarea
+                className="question-answer-entry"
+                value={answerText}
+                onChange={updateAnswerText}
+              ></textarea>
+              <div>
+                <button className="add-answer" onClick={postAnswer}>
+                  Post Your Answer
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     )
   }
 }
-
-//move back to line 108 after we get token tracking down
-// {localStorage.getItem('token') === '' ? (
-//   <div>You must be logged in to post an answer.</div>
-// ) : (
-//   <>
-//     <div>
-//       <h4 className="question-answer-header">Answers</h4>
-//       {question.questionData.answers.length > 0 ? (
-//         question.questionData.answers.map(answer => {
-//           return <Answer answerText={answer.answerText} />
-//         })
-//       ) : (
-//         <p>No Answers Yet</p>
-//       )}
-//     </div>
-//     <h3 className="answer-heading">Your Answer</h3>
-//     <textarea
-//       className="question-answer-entry"
-//       value={answerText}
-//       onChange={updateAnswerText}
-//     ></textarea>
-//     <div>
-//       <button className="add-answer" onClick={postAnswer}>
-//         Post Your Answer
-//       </button>
-//     </div>
-//   </>
-// )}
-// </div>
-// </div>
-// )
-// }
-// }
 
 export default QuestionDetails
