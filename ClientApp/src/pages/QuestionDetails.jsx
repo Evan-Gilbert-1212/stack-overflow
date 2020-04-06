@@ -109,41 +109,33 @@ const QuestionDetails = props => {
           </section>
         </article>
         <div>
-          {localStorage.getItem('token') === '' ? (
-            <div>You must be logged in to post an answer.</div>
+          <h4 className="question-answer-header">Answers</h4>
+          {question.questionData.answers.length > 0 ? (
+            question.questionData.answers.map(answer => {
+              return (
+                <Answer
+                  key={answer.id}
+                  id={answer.id}
+                  answerScore={answer.answerScore}
+                  answerText={answer.answerText}
+                  answerPostedOn={answer.answerPostedOn}
+                />
+              )
+            })
           ) : (
-            <>
-              <div>
-                <h4 className="question-answer-header">Answers</h4>
-                {question.questionData.answers.length > 0 ? (
-                  question.questionData.answers.map(answer => {
-                    return (
-                      <Answer
-                        key={answer.id}
-                        id={answer.id}
-                        answerScore={answer.answerScore}
-                        answerText={answer.answerText}
-                        answerPostedOn={answer.answerPostedOn}
-                      />
-                    )
-                  })
-                ) : (
-                  <p>No Answers Yet</p>
-                )}
-              </div>
-              <h3 className="answer-heading">Your Answer</h3>
-              <textarea
-                className="question-answer-entry"
-                value={answerText}
-                onChange={updateAnswerText}
-              ></textarea>
-              <div>
-                <button className="add-answer" onClick={postAnswer}>
-                  Post Your Answer
-                </button>
-              </div>
-            </>
+            <p>No Answers Yet</p>
           )}
+          <h3 className="answer-heading">Your Answer</h3>
+          <textarea
+            className="question-answer-entry"
+            value={answerText}
+            onChange={updateAnswerText}
+          ></textarea>
+          <div>
+            <button className="add-answer" onClick={postAnswer}>
+              Post Your Answer
+            </button>
+          </div>
         </div>
       </div>
     )
